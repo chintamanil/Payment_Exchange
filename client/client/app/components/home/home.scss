@@ -1,0 +1,18 @@
+    @import './../../common/styles/_variables';
+    @import './../../common/styles/_mixins';
+    .home {}
+
+    .homeButtons a {
+        @include buttonClass(100px, 20px, block);
+    }
+
+    .homeButtons {
+        position: fixed;
+        top: 60%;
+        // left: 50%;
+        margin-top: -300px;
+        // margin-left: -300px;
+        width: 100%;
+        text-align: center;
+    }
+

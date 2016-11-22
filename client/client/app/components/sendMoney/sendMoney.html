@@ -1,0 +1,71 @@
+<header>
+    <h2>Send Money</h2>
+</header>
+<div class="sendMoney" ng-hide="$ctrl.formSubmitted">
+    <form name="form" ng-submit="$ctrl.submitForm()" novalidate>
+        <div class="form-group" show-errors>
+            <label for="to">To:</label>
+            <input type="email" name="to" class="form-control sendTo" ng-model="$ctrl.formObj.to" vaidate-email ng-model-options="{debounce: 1000}" required />
+            <span class="invalidEntry" ng-show="!form.to.$valid && !form.to.$pristine">
+                   &cross;
+              </span>
+            <span class="validEntry" ng-show="!!form.to.$valid && !form.to.$pristine">
+                   &#10004;
+              </span>
+        </div>
+        <div class="form-group" show-errors>
+            <label for="amount">Amount:</label>
+            <span ng-bind-html="$ctrl.selectedCurrency.code" class="code"></span>
+            <input type="number" name="amount" class="form-control sendAmount" ng-model="$ctrl.formObj.amount" ng-min="0.01" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.01" required />
+            <span class="invalidEntry alignment" ng-show="!form.amount.$valid && !form.amount.$pristine">
+                   &cross;
+                </span>
+            <span class="validEntry alignment" ng-show="!!form.amount.$valid && !form.amount.$pristine">
+                   &#10004;
+                </span>
+            <label class="select">
+                <select ng-options="item.currency for item in $ctrl.currencyMapping" ng-model="$ctrl.selectedCurrency" class="currencySelect">
+                </select>
+            </label>
+        </div>
+        <div class="form-group" show-errors>
+            <label for="msg">Message (optional):</label>
+            <textarea name="msg" class="form-control" ng-model="$ctrl.formObj.msg">
+            </textarea>
+        </div>
+        <label for="paymentType">What's this I am paying for?</label>
+        <div class="form-group selectGroup">
+            <ul class="">
+                <li class="block " ng-repeat="type in $ctrl.paymentTypes track by $index" ng-class="{selected: $index== $ctrl.selectedIndex}" ng-click="$ctrl.toggleSelect($index)">
+                    <span>{{type}}</span>
+                    <span class="check" ng-show="$index== $ctrl.selectedIndex"> &check;</span>
+                </li>
+            </ul>
+        </div>
+    </form>
+</div>
+<div ng-show="$ctrl.formSubmitted" class="formSubmitted">
+    <div class="">
+        You have sent <span ng-bind-html="$ctrl.selectedCurrency.code" class="code"></span>{{$ctrl.formObj.amount}} to {{$ctrl.toUser.firstName}} {{$ctrl.toUser.lastName}}!
+    </div>
+    <span class="large">&check;</span>
+</div>
+<footer>
+    <div ng-hide="$ctrl.formSubmitted" class="buttons">
+        <button type="submit" class="alignleft" ng-click="$ctrl.clearForm(form)">
+            Clean
+        </button>
+        <button type="submit" class="alignright" ng-disabled="form.$invalid" value="Next" ng-click="$ctrl.submitForm(form)">
+            Next
+        </button>
+    </div>
+    <div ng-show="$ctrl.formSubmitted" class="buttons">
+        <a ui-sref="sendMoney" class="alignleft" ng-click="$ctrl.clearForm()">Send Money</a>
+        <a ui-sref="transactionHistory" class="alignright">Transaction History</a>
+    </div>
+</footer>
+<div class="spinner" ng-show="$ctrl.showSpinner">
+    <div class="large progress">
+        <div>Loading…</div>
+    </div>
+</div>

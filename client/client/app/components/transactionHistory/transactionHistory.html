@@ -1,0 +1,17 @@
+<header>
+    <h2>Transaction History</h2>
+</header>
+<div class="transactionHistory">
+    <table>
+        <tr ng-repeat="data in $ctrl.dataList" class="transactionElements">
+            <td>{{data.createdAt | date : 'dd/MM/yyyy'}} </td> <!-- TODO Do FIlter on server -->
+            <td>{{data.toUserId.firstName}} {{data.toUserId.lastName}}</td>
+            <td><span ng-bind-html="$ctrl.defaultCurrency" class="code"></span>{{data.amount}} </td>
+        </tr>
+    </table>
+</div>
+<footer class="transperant">
+    <div class="buttons">
+        <button class="back" ng-click="$ctrl.goBack()">Back</button>
+    </div>
+</footer>

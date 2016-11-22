@@ -1,0 +1,185 @@
+@import './_mixins';
+@import './_variables';
+
+input {
+    height: 30px;
+    border: none;
+    width: 100%;
+}
+
+textarea {
+    height: 100px;
+    border: none;
+    font-size: $headerFont;
+    resize: none;
+}
+
+select {
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0px 22px 0px 5px;
+    overflow: hidden;
+    font-size: $headerFont;
+    @include border-radius(5px);
+    background-color: $sendMoneyBodyColor;
+    @include apperance(menuselect);
+}
+
+input,
+textarea {
+    background-color: $sendMoneyBodyColor;
+    @include apperance(none);
+    // border: 1px solid $bodyBorderColor;
+    width: 100%;
+    @include border-radius(5px);
+}
+
+span {
+    font-size: $headerFont;
+}
+
+label {
+    font-size: $headerFont;
+    color: $headerColor;
+    padding: 5px 5px 5px 0px;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+input.form-control {
+    font-size: $headerFont;
+    vertical-align: middle;
+    text-align: bottom;
+}
+
+a,
+label,
+span,
+input,
+table,
+td,
+tr, button {
+    font-size: $headerFont;
+}
+
+ul,
+li {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    font-size: $headerFont;
+    color: $headerColor;
+}
+
+form {
+    padding: 15px;
+}
+
+footer div button {
+    min-width: 100px;
+}
+
+li {
+    border-bottom: 1px solid $bodyBorderColor;
+}
+
+li:last-child,
+{
+    border: none;
+}
+
+li:first-child {
+    border-top: none;
+}
+
+footer {
+    position: fixed;
+    border-top: 2px solid black;
+    opacity: 0.95;
+}
+
+header {
+    border-bottom: 2px solid black;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+html {
+    border: 2px solid black;
+}
+
+table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+tr {
+    text-align: center;
+    margin: 50px 0 50px 0;
+}
+
+tr:nth-child(even) {
+    background: $historyEvenElement;
+}
+
+tr:nth-child(odd) {
+    background: $historyOddElement;
+}
+button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+input[type="text"], textarea {
+  background-color : $sendMoneyBodyColor;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px $sendMoneyBodyColor inset;
+}
+
+select {
+    border:none;
+    outline:none;
+    display: inline-block;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none;
+    cursor:pointer;
+}
+
+label.select {
+    position:relative;
+    float: right;
+    margin-top: -5px;
+}
+label.select:after {
+    content:'▶';
+    font:15px "Consolas", monospace;
+    color:black;
+    -webkit-transform:rotate(90deg);
+    -moz-transform:rotate(90deg);
+    -ms-transform:rotate(90deg);
+    transform:rotate(90deg);
+    right:10px; top:10px;
+    padding:0;
+    position:absolute;
+    pointer-events:none;
+}
+label:before {
+    content:'';
+    right:6px; top:0px;
+    width:20px; height:20px;
+    // background:#f8f8f8;
+    position:absolute;
+    pointer-events:none;
+    display:block;
+}

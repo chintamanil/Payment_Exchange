@@ -1,0 +1,100 @@
+    @import './../../common/styles/_variables';
+    @import './../../common/styles/_mixins';
+    .form-group {
+        border: 1px solid black;
+        @include border-radius(10px);
+        padding: 15px;
+        background-color: $sendMoneyBodyColor;
+        margin-bottom: 20px;
+    }
+
+    .currencySelect {
+        display: inline-block;
+        width: 75px;
+        float: right;
+        position: relative;
+        border: 1px solid $bodyBorderColor;
+    }
+
+    .matchingColor {
+        background-color: $bodyColor;
+        border: none;
+    }
+
+    .selectGroup {
+        padding: 0;
+    }
+
+    .block {
+        display: block;
+        padding: 15px;
+    }
+
+    .alignleft {
+        float: left;
+        margin-left: 100px;
+    }
+
+    .alignright {
+        float: right;
+        margin-right: 100px;
+    }
+
+    li.selected {
+        color: $checkTextColor;
+    }
+
+    .check {
+        float: right;
+        font-size: 18px;
+    }
+
+    span.code {
+        padding: 0;
+        vertical-align:middle;
+    }
+
+    .large {
+        @include font-size($largeFont);
+        color: $checkTextColor;
+    }
+
+    div.formSubmitted {
+        text-align: center;
+        margin-top: calc(40%);
+        font-size: $headerFont;
+    }
+
+    input.sendTo {
+        width: calc(100% - 70px);
+    }
+
+    input.sendAmount {
+        width: calc(100% - 260px);
+    }
+
+    .validEntry,
+    .invalidEntry {
+        color: white;
+        background-color: green;
+        border-radius: 50%;
+        padding: 2px 5px;
+        margin: 0 10px;
+    }
+
+    span.alignment {
+        vertical-align: middle;
+        text-align: right;
+        position: absolute;
+        right: 120px;
+        margin-top: 4px;
+    }
+
+    .invalidEntry {
+        background-color: red;
+        padding: 0 5px;
+    }
+
+    .validEntry {
+        background-color: green;
+    }
